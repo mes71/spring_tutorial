@@ -12,4 +12,10 @@ public class SimpleController {
     String sayHello() {
         return "Hello World";
     }
+
+
+    @GetMapping("/goodbye")
+    String sayGoodbye() {
+        return "Goodbye World";
+    }
 }
