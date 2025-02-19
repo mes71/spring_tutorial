@@ -15,13 +15,11 @@ public class SimpleController {
     String instructorName;
     @Value("${student.class}")
     String studentClass;
-    private final Instructor instructor;
 
 
     @Autowired
-    public SimpleController(Instructor instructor) {
-        this.instructor = instructor;
-    }
+    private Instructor instructor;
+
 
     @GetMapping("/")
     String sayHello() {
