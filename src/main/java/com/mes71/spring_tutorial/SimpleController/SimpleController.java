@@ -1,8 +1,8 @@
 package com.mes71.spring_tutorial.SimpleController;
 
-
-import com.mes71.spring_tutorial.F7.Instructor;
+import com.mes71.edu.F7.Instructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +17,7 @@ public class SimpleController {
     String studentClass;
 
 
+    @Qualifier("phpInstructor")
     @Autowired
     private Instructor instructor;
 
