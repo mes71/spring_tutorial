@@ -17,7 +17,6 @@ public class SimpleController {
     String studentClass;
 
 
-    @Qualifier("phpInstructor")
     @Autowired
     private Instructor instructor;
 
