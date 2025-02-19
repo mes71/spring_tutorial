@@ -1,6 +1,8 @@
 package com.mes71.spring_tutorial.SimpleController;
 
 
+import com.mes71.spring_tutorial.F7.Instructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,12 +13,15 @@ public class SimpleController {
 
     @Value("${instructor.name}")
     String instructorName;
-
-
     @Value("${student.class}")
     String studentClass;
+    private final Instructor instructor;
 
 
+    @Autowired
+    public SimpleController(Instructor instructor) {
+        this.instructor = instructor;
+    }
 
     @GetMapping("/")
     String sayHello() {
@@ -31,7 +36,13 @@ public class SimpleController {
 
 
     @GetMapping("/classInfo")
-    String getClassInfo(){
-        return  "Instructor: " + instructorName + " Student Class: " + studentClass;
+    String getClassInfo() {
+        return "Instructor: " + instructorName + " Student Class: " + studentClass;
+    }
+
+
+    @GetMapping("/getProgramming")
+    String getProgramming() {
+        return instructor.getProgrammingExercises();
     }
 }
