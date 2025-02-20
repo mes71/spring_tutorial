@@ -7,6 +7,11 @@ import org.springframework.stereotype.Component;
 @Component
 @Primary
 public class PythonInstructor implements Instructor {
+
+    public PythonInstructor() {
+        System.out.println("jojo => Python Instructor Constructor");
+    }
+
     @Override
     public String getProgrammingExercises() {
         return "Python Instructor";

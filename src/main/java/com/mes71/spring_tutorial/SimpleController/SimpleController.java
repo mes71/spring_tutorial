@@ -11,14 +11,31 @@ import org.springframework.web.bind.annotation.RestController;
 public class SimpleController {
 
 
+    private final Instructor instructor;
+    private final Instructor nInstructor;
     @Value("${instructor.name}")
     String instructorName;
     @Value("${student.class}")
     String studentClass;
 
+ /*   @Autowired
+    public SimpleController(
+            @Qualifier("javaInstructor") Instructor instructor,
+            @Qualifier("javaInstructor") Instructor nInstructor) {
+        System.out.println("jojo => SimpleController Constructor");
+        this.instructor = instructor;
+        this.nInstructor = nInstructor;
+    }*/
+
 
     @Autowired
-    private Instructor instructor;
+    public SimpleController(
+            @Qualifier("phpInstructor") Instructor instructor,
+            @Qualifier("phpInstructor") Instructor nInstructor) {
+        System.out.println("jojo => SimpleController Constructor");
+        this.instructor = instructor;
+        this.nInstructor = nInstructor;
+    }
 
 
     @GetMapping("/")
@@ -42,5 +59,11 @@ public class SimpleController {
     @GetMapping("/getProgramming")
     String getProgramming() {
         return instructor.getProgrammingExercises();
+    }
+
+
+    @GetMapping("/check")
+    String check() {
+        return "Instructors is  " + (instructor == nInstructor);
     }
 }
